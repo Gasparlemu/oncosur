@@ -1,0 +1,907 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fundación Oncosur | Apoyo y acompañamiento oncológico en Valdivia</title>
+  <meta name="description" content="Fundación Oncosur entrega apoyo, acompañamiento e información para personas y familias relacionadas con el cáncer en Valdivia.">
+  <link rel="icon" href="data:,">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Fundación Oncosur">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Fundación Oncosur | Apoyo y acompañamiento oncológico en Valdivia">
+  <meta property="og:description" content="Fundación Oncosur entrega apoyo, acompañamiento e información para personas y familias relacionadas con el cáncer en Valdivia.">
+  <meta property="og:image" content="assets/oncosur/equipo-oncosur.png">
+  <meta property="og:locale" content="es_CL">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Fundación Oncosur | Apoyo y acompañamiento oncológico en Valdivia">
+  <meta name="twitter:description" content="Fundación Oncosur entrega apoyo, acompañamiento e información para personas y familias relacionadas con el cáncer en Valdivia.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --am: #f7c205; --ce: #5ee0e9; --am-dk: #d4a400; --ce-dk: #38c5ce;
+      --tx: #1e2329; --tx2: #5a6472; --bg: #f6f8fa; --w: #ffffff;
+      --sh: rgba(0,0,0,0.07); --sh2: rgba(0,0,0,0.14);
+      --r: 20px; --rl: 32px; --t: 0.3s ease;
+    }
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; overflow-x:hidden; }
+    body { font-family:'Nunito',sans-serif; color:var(--tx); background:#fff; overflow-x:hidden; line-height:1.7; }
+
+    .fi    { opacity:0; transform:translateY(36px); transition:opacity .75s ease,transform .75s ease; }
+    .fi-l  { opacity:0; transform:translateX(-44px); transition:opacity .75s ease,transform .75s ease; }
+    .fi-r  { opacity:0; transform:translateX(44px);  transition:opacity .75s ease,transform .75s ease; }
+    .fi.on,.fi-l.on,.fi-r.on { opacity:1; transform:none; }
+    .d1{transition-delay:.1s}.d2{transition-delay:.22s}.d3{transition-delay:.34s}
+    .d4{transition-delay:.46s}.d5{transition-delay:.58s}.d6{transition-delay:.7s}
+    .d7{transition-delay:.82s}.d8{transition-delay:.94s}.d9{transition-delay:1.06s}
+    .d10{transition-delay:1.18s}.d11{transition-delay:1.3s}.d12{transition-delay:1.42s}
+
+    #prog { position:fixed;top:0;left:0;width:0;height:3px;background:linear-gradient(90deg,var(--am),var(--ce));z-index:9999;transition:width .1s linear; }
+
+    /* NAV — glassmorphism azul premium */
+    nav { position:fixed;top:0;width:100%;z-index:1000;padding:12px 28px;transition:all .4s ease;background:rgba(14,22,41,.18);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px); }
+    nav.on { background:rgba(10,18,36,.72);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);box-shadow:0 1px 0 rgba(94,224,233,.08),0 4px 28px rgba(0,0,0,.22);padding:6px 28px; }
+    .nav-in { max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between; }
+    .logo { display:flex;align-items:center;text-decoration:none; }
+    .logo-real { height:100px;width:auto;object-fit:contain;filter:none!important;mix-blend-mode:normal!important;flex-shrink:0;transition:transform var(--t); }
+    .logo:hover .logo-real { transform:scale(1.05); }
+    .nav-ul { list-style:none;display:flex;gap:4px;align-items:center; }
+    .nav-ul a { text-decoration:none;color:rgba(255,255,255,.9);font-weight:600;font-size:14px;padding:8px 13px;border-radius:50px;transition:all var(--t); }
+    nav.on .nav-ul a { color:rgba(255,255,255,.9); }
+    .nav-ul a:hover { background:rgba(247,194,5,.18);color:var(--am-dk); }
+    .nav-ul .btn-n { background:var(--am)!important;color:var(--tx)!important;font-weight:800;padding:9px 20px;box-shadow:0 3px 14px rgba(247,194,5,.3); }
+    .nav-ul .btn-n:hover { background:var(--am-dk)!important;transform:translateY(-1px); }
+    .burger { display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px; }
+    .burger span { display:block;width:24px;height:2.5px;background:#fff;border-radius:2px;transition:all var(--t); }
+    nav.on .burger span { background:#fff; }
+    .burger.op span:nth-child(1){transform:rotate(45deg) translate(5px,7px);}
+    .burger.op span:nth-child(2){opacity:0;}
+    .burger.op span:nth-child(3){transform:rotate(-45deg) translate(5px,-7px);}
+    .mob { display:none;position:fixed;inset:0;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);z-index:999;flex-direction:column;align-items:center;justify-content:center;gap:22px; }
+    .mob.op { display:flex; }
+    .mob a { text-decoration:none;color:var(--tx);font-size:21px;font-weight:700;transition:color var(--t); }
+    .mob a:hover { color:var(--am-dk); }
+    .mob .mbtn { background:var(--am);padding:13px 38px;border-radius:50px;color:var(--tx)!important; }
+
+    /* LAYOUT */
+    section { padding:100px 28px; }
+    .wrap { max-width:1200px;margin:0 auto; }
+    .tag { display:inline-block;background:rgba(94,224,233,.13);color:var(--ce-dk);font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:2px;padding:5px 15px;border-radius:50px;margin-bottom:16px; }
+    .stit { font-size:clamp(28px,4.5vw,50px);font-weight:900;line-height:1.15;color:var(--tx);margin-bottom:16px; }
+    .stit em { color:var(--am-dk);font-style:normal; }
+    .ssub { font-size:17px;color:var(--tx2);line-height:1.9;max-width:620px; }
+
+    /* HERO */
+    .hero-logo-block { display:flex;flex-direction:column;align-items:center;margin-bottom:6px; }
+    .logo-real-hero { height:clamp(220px,38vw,380px);width:auto;object-fit:contain;filter:none!important;mix-blend-mode:normal!important; }
+    #hero { min-height:100vh;padding:120px 28px 80px;background:#0e1629;display:flex;align-items:center;position:relative;overflow:hidden; }
+    .hero-slides { position:absolute;inset:0;z-index:0;overflow:hidden; }
+    .hs { position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transform:translateX(60px);transition:opacity 1.4s ease,transform 1.4s ease; }
+    .hs.hs-active { opacity:1;transform:translateX(0); }
+    .hs.hs-out { opacity:0;transform:translateX(-60px);transition:opacity 1.4s ease,transform 1.4s ease; }
+    .hero-overlay { position:absolute;inset:0;z-index:1;background:linear-gradient(135deg,rgba(14,22,41,.82) 0%,rgba(15,52,96,.72) 50%,rgba(14,58,69,.80) 100%);pointer-events:none; }
+    .hblob { position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none;z-index:3; }
+    .b1 { width:560px;height:560px;background:var(--am);top:-140px;right:-140px;opacity:.08; }
+    .b2 { width:460px;height:460px;background:var(--ce);bottom:-80px;left:-60px;opacity:.08; }
+    #stars { position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:2; }
+    .star { position:absolute;background:#fff;border-radius:50%;animation:tw 3s ease-in-out infinite; }
+    @keyframes tw { 0%,100%{opacity:.15;transform:scale(1);}50%{opacity:.6;transform:scale(1.4);} }
+    .hero-ct { position:relative;z-index:4;max-width:780px;margin:0 auto;text-align:center; }
+    .hero-dots { position:absolute;bottom:70px;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:4; }
+    .hero-dot { width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.3);cursor:pointer;transition:all .3s ease;border:none; }
+    .hero-dot.active { background:var(--am);transform:scale(1.3); }
+    .hero-h1 { font-size:clamp(38px,7vw,80px);font-weight:900;color:#fff;line-height:1.05;margin-bottom:22px;letter-spacing:-.5px; }
+    .hero-h1 em { color:var(--am);font-style:normal; }
+    .hero-sub { font-size:clamp(17px,2.2vw,22px);color:rgba(255,255,255,.82);margin-bottom:26px;line-height:1.75;max-width:640px;margin-left:auto;margin-right:auto; }
+    .hero-stat { background:rgba(94,224,233,.1);border:1px solid rgba(94,224,233,.3);border-radius:50px;padding:12px 28px;display:inline-block;font-size:clamp(14px,1.6vw,16px);color:var(--ce);font-weight:700;margin-bottom:40px; }
+    .hero-btns { display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin-bottom:88px; }
+    .btn-a { display:inline-flex;align-items:center;gap:8px;background:var(--am);color:var(--tx);font-family:'Nunito',sans-serif;font-size:16px;font-weight:800;padding:16px 40px;border-radius:50px;text-decoration:none;border:none;cursor:pointer;transition:all var(--t);box-shadow:0 6px 28px rgba(247,194,5,.52); }
+    .btn-a:hover { background:var(--am-dk);transform:translateY(-3px);box-shadow:0 14px 44px rgba(247,194,5,.68); }
+    .btn-b { display:inline-flex;align-items:center;gap:8px;background:transparent;color:#fff;font-family:'Nunito',sans-serif;font-size:16px;font-weight:700;padding:14px 34px;border-radius:50px;text-decoration:none;border:2px solid rgba(255,255,255,.3);cursor:pointer;transition:all var(--t); }
+    .btn-b:hover { background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.6);transform:translateY(-3px); }
+    .scroll-ind { position:absolute;bottom:32px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(255,255,255,.35);font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase; }
+    .arr { width:22px;height:22px;border-right:2px solid rgba(255,255,255,.35);border-bottom:2px solid rgba(255,255,255,.35);transform:rotate(45deg);animation:bn 2s ease-in-out infinite; }
+    @keyframes bn { 0%,100%{transform:rotate(45deg) translateY(0);}50%{transform:rotate(45deg) translateY(7px);} }
+
+    /* CONTEXTO */
+    #contexto { background:linear-gradient(180deg,var(--bg) 0%,#fff 40%); }
+    .ctx-intro { text-align:center;max-width:700px;margin:0 auto 64px; }
+    .ctx-cards { display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:26px;margin-bottom:56px; }
+    .ctx-card { border-radius:var(--rl);padding:40px 32px;box-shadow:0 4px 28px var(--sh);transition:all var(--t); }
+    .ctx-card:nth-child(1) { background:linear-gradient(150deg,rgba(94,224,233,.32) 0%,#fff 55%);border:2px solid rgba(94,224,233,.82); }
+    .ctx-card:nth-child(2) { background:linear-gradient(150deg,rgba(247,194,5,.32) 0%,#fff 55%);border:2px solid rgba(247,194,5,.82); }
+    .ctx-card:nth-child(3) { background:linear-gradient(150deg,rgba(15,52,96,.22) 0%,#fff 55%);border:2px solid rgba(15,52,96,.72); }
+    .ctx-card:hover { transform:translateY(-6px);box-shadow:0 14px 44px var(--sh2); }
+    .ctx-ico { width:58px;height:58px;border-radius:16px;background:linear-gradient(135deg,rgba(247,194,5,.13),rgba(94,224,233,.13));display:flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:18px; }
+    .ctx-card h3 { font-size:19px;font-weight:800;margin-bottom:10px; }
+    .ctx-card p  { color:var(--tx2);line-height:1.85; }
+    .ctx-cita { background:rgba(247,194,5,.07);border:1px solid rgba(247,194,5,.18);border-radius:var(--rl);padding:52px;text-align:center; }
+    .ctx-cita p { font-size:clamp(18px,2.4vw,24px);font-weight:700;font-style:italic;color:var(--tx);line-height:1.65;max-width:700px;margin:0 auto; }
+    .ctx-cita em { color:var(--am-dk);font-style:normal; }
+
+    /* NOSOTROS */
+    #nosotros { background:var(--bg); }
+    .nos-grid { display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start; }
+    .nos-ph { width:100%;aspect-ratio:4/5;border-radius:var(--rl);overflow:hidden; }
+    .nos-ph img { width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease; }
+    .nos-ph:hover img { transform:scale(1.04); }
+    .nos-img-wrap { position:relative; }
+    .nos-badge { position:absolute;bottom:-18px;right:-18px;background:var(--am);color:var(--tx);padding:18px 22px;border-radius:var(--r);font-weight:800;font-size:14px;box-shadow:0 8px 24px rgba(247,194,5,.3);text-align:center;line-height:1.3; }
+    .nos-badge .yr { font-size:26px;font-weight:900;display:block; }
+    .nos-txt h2 { font-size:clamp(24px,3vw,40px);font-weight:900;line-height:1.2;margin-bottom:22px; }
+    .nos-txt p  { color:var(--tx2);font-size:16px;line-height:1.9;margin-bottom:16px; }
+    .nos-txt p strong { color:var(--tx); }
+    .nos-vals { display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:28px;margin-bottom:38px; }
+    .val { display:flex;align-items:center;gap:10px;padding:13px 16px;background:#fff;border-radius:var(--r);transition:background var(--t);font-size:14px;font-weight:700;box-shadow:0 2px 8px var(--sh); }
+    .val:hover { background:rgba(247,194,5,.08); }
+    .val-ico { font-size:20px;flex-shrink:0; }
+    .dir-title { font-size:17px;font-weight:800;color:var(--tx);margin-bottom:20px;display:flex;align-items:center;gap:10px; }
+    .dir-title::before { content:'';display:block;width:4px;height:20px;background:var(--am);border-radius:2px; }
+    .dir-foto-wrap { border-radius:var(--rl);overflow:hidden;margin-bottom:24px;box-shadow:0 6px 28px var(--sh); }
+    .dir-foto { width:100%;height:auto;max-height:none;object-fit:contain;object-position:center center;display:block;transition:transform .5s ease; }
+    .dir-foto-wrap:hover .dir-foto { transform:scale(1.03); }
+    .dir-foto-ph { width:100%;height:200px;background:linear-gradient(135deg,rgba(247,194,5,.1),rgba(94,224,233,.15));display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:var(--tx2);font-size:13px;font-weight:700;text-align:center;padding:20px; }
+    .dir-foto-ph span { font-size:36px; }
+    .dir-grid { display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px; }
+    .dir-card { background:#fff;border-radius:var(--r);padding:18px 16px;text-align:center;border:1px solid rgba(247,194,5,.15);transition:all var(--t);box-shadow:0 2px 10px var(--sh); }
+    .dir-card:hover { transform:translateY(-3px);border-color:rgba(247,194,5,.4);box-shadow:0 6px 20px rgba(247,194,5,.1); }
+    .dir-av { width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--am),var(--ce));display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:900;color:#fff;margin:0 auto 10px; }
+    .dir-name { font-size:14px;font-weight:800;color:var(--tx);margin-bottom:4px; }
+    .dir-role { font-size:12px;font-weight:700;color:var(--ce-dk);text-transform:uppercase;letter-spacing:.5px; }
+
+    /* MISIÓN */
+    #mision { background:var(--bg); }
+    .mv-hd { text-align:center;max-width:580px;margin:0 auto 56px; }
+    .mv-grid { display:grid;grid-template-columns:1fr 1fr;gap:32px; }
+    .mv-card { border-radius:var(--rl);padding:48px 40px;box-shadow:0 4px 28px var(--sh);position:relative;overflow:hidden;transition:all var(--t); }
+    .mv-card.mision { background:linear-gradient(145deg,rgba(247,194,5,.38) 0%,rgba(255,220,80,.16) 50%,#fff 100%);border:2px solid rgba(247,194,5,.64); }
+    .mv-card.vision  { background:linear-gradient(145deg,rgba(94,224,233,.38) 0%,rgba(56,197,206,.16) 50%,#fff 100%);border:2px solid rgba(94,224,233,.7); }
+    .mv-card::before { content:'';position:absolute;top:0;left:0;right:0;height:5px; }
+    .mv-card.mision::before { background:linear-gradient(90deg,var(--am),#ffd44a); }
+    .mv-card.vision::before  { background:linear-gradient(90deg,var(--ce),var(--am)); }
+    .mv-card:hover { transform:translateY(-6px);box-shadow:0 16px 48px var(--sh2); }
+    .mv-ico { font-size:44px;margin-bottom:18px; }
+    .mv-card h3 { font-size:23px;font-weight:900;margin-bottom:16px;color:var(--tx); }
+    .mv-card p  { color:var(--tx2);font-size:15px;line-height:1.9; }
+
+    /* QUÉ HACEMOS */
+    #que-hacemos { background:#fff; }
+    .qh-hd { text-align:center;max-width:640px;margin:0 auto 64px; }
+    .qh-grid { display:grid;grid-template-columns:repeat(auto-fit,minmax(256px,1fr));gap:28px; }
+    .qh-card { border-radius:var(--rl);padding:42px 32px;box-shadow:0 6px 32px var(--sh);position:relative;overflow:hidden;transition:all var(--t); }
+    .qh-card:nth-child(1) { background:linear-gradient(145deg,rgba(247,194,5,.29) 0%,#fff 60%);border:2px solid rgba(247,194,5,.58); }
+    .qh-card:nth-child(2) { background:linear-gradient(145deg,rgba(94,224,233,.29) 0%,#fff 60%);border:2px solid rgba(94,224,233,.58); }
+    .qh-card:nth-child(3) { background:linear-gradient(145deg,rgba(15,52,96,.22) 0%,#fff 60%);border:2px solid rgba(15,52,96,.48); }
+    .qh-card:nth-child(4) { background:linear-gradient(145deg,rgba(247,194,5,.19) 0%,rgba(94,224,233,.19) 100%);border:2px solid rgba(94,224,233,.52); }
+    .qh-card::before { content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--am),var(--ce)); }
+    .qh-card:hover { transform:translateY(-8px);box-shadow:0 20px 56px var(--sh2); }
+    .qh-tag { display:inline-block;background:rgba(94,224,233,.12);color:var(--ce-dk);font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1px;padding:4px 12px;border-radius:50px;margin-bottom:14px; }
+    .qh-emo { font-size:40px;display:block;margin-bottom:18px; }
+    .qh-card h3 { font-size:19px;font-weight:800;margin-bottom:10px; }
+    .qh-card p  { color:var(--tx2);font-size:15px;line-height:1.85; }
+
+    /* CÓMO ACOMPAÑAMOS */
+    #como-ac { background:linear-gradient(135deg,#0f3460 0%,#0e3a45 100%);color:#fff; }
+    .ac-hd { text-align:center;max-width:600px;margin:0 auto 64px; }
+    .ac-hd .tag { background:rgba(94,224,233,.18);color:var(--ce); }
+    .ac-hd .stit { color:#fff; }
+    .ac-hd .ssub { color:rgba(255,255,255,.68); }
+    .tl { position:relative;max-width:800px;margin:0 auto; }
+    .tl::before { content:'';position:absolute;left:32px;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--am),var(--ce));opacity:.25; }
+    .tl-item { display:flex;gap:30px;margin-bottom:52px; }
+    .tl-num { width:64px;height:64px;border-radius:50%;background:var(--am);color:var(--tx);font-size:22px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;position:relative;z-index:1;box-shadow:0 0 0 8px rgba(247,194,5,.14); }
+    .tl-ct { padding-top:8px;flex:1; }
+    .tl-ct h3 { font-size:19px;font-weight:800;color:#fff;margin-bottom:10px; }
+    .tl-ct p  { color:rgba(255,255,255,.68);line-height:1.85; }
+    .tl-nota { background:rgba(247,194,5,.1);border:1px solid rgba(247,194,5,.28);border-radius:var(--r);padding:28px 36px;text-align:center;margin-top:8px; }
+    .tl-nota p { color:var(--am)!important;font-weight:700;font-size:16px;font-style:italic; }
+
+    /* IMPACTO */
+    #impacto { background:linear-gradient(180deg,var(--bg) 0%,#fff 100%); }
+    .imp-grid { display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start; }
+    .imp-stats { display:grid;grid-template-columns:1fr 1fr;gap:16px; }
+    .stat { background:linear-gradient(135deg,rgba(247,194,5,.07),rgba(94,224,233,.07));border-radius:var(--rl);padding:34px 26px;text-align:center;border:1px solid rgba(247,194,5,.14);transition:all var(--t); }
+    .stat:hover { transform:translateY(-4px);border-color:rgba(247,194,5,.38);box-shadow:0 8px 32px rgba(247,194,5,.1); }
+    .stat.feat { grid-column:span 2;background:linear-gradient(135deg,#f7c205,#ffd44a);border:none; }
+    .stat-n { font-size:44px;font-weight:900;color:var(--am-dk);line-height:1;margin-bottom:6px; }
+    .stat.feat .stat-n { color:#fff;font-size:22px; }
+    .stat-l { font-size:13px;font-weight:700;color:var(--tx2);text-transform:uppercase;letter-spacing:1px; }
+    .stat.feat .stat-l { color:rgba(255,255,255,.78); }
+    .casa-block { display:flex;align-items:center;gap:24px;margin-top:22px;background:linear-gradient(135deg,rgba(247,194,5,.08),rgba(94,224,233,.08));border-radius:var(--rl);padding:30px 32px;border:1px solid rgba(247,194,5,.2);transition:all var(--t); }
+    .casa-block:hover { transform:translateY(-3px);box-shadow:0 8px 28px rgba(247,194,5,.12); }
+    .casa-ico { font-size:42px;flex-shrink:0; }
+    .casa-block h3 { font-size:19px;font-weight:800;color:var(--tx);margin-bottom:4px; }
+    .casa-block p  { font-size:14px;color:var(--tx2);margin-bottom:10px; }
+    .casa-stat { display:inline-block;background:var(--am);color:var(--tx);font-size:13px;font-weight:800;padding:5px 14px;border-radius:50px; }
+    .imp-txt h2 { font-size:clamp(24px,3vw,40px);font-weight:900;line-height:1.25;margin-bottom:24px; }
+    .imp-txt p  { color:var(--tx2);font-size:16px;line-height:1.9;margin-bottom:18px; }
+    .imp-txt p strong { color:var(--tx); }
+
+    /* COLABORADORES */
+    #colaboradores { background:linear-gradient(180deg,rgba(94,224,233,.19) 0%,var(--bg) 100%); }
+    .col-hd { text-align:center;max-width:580px;margin:0 auto 52px; }
+    .col-grid { display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:18px; }
+    .col-card { background:#fff;border-radius:var(--r);padding:30px 22px;text-align:center;box-shadow:0 4px 18px var(--sh);transition:all var(--t);border:2px solid rgba(94,224,233,.45); }
+    .col-card:hover { transform:translateY(-6px);box-shadow:0 14px 36px rgba(94,224,233,.35);border-color:rgba(94,224,233,.82); }
+    .col-ico { font-size:34px;margin-bottom:10px; }
+    .col-card h3 { font-size:14px;font-weight:800;margin-bottom:4px; }
+    .col-card p  { font-size:12px;color:var(--tx2); }
+
+    /* CAMPAÑAS */
+    #campanas { background:linear-gradient(180deg,#fff 0%,rgba(247,194,5,.16) 100%); }
+    .camp-hd { text-align:center;max-width:580px;margin:0 auto 48px; }
+    .camp-phrase { margin-bottom:56px; }
+    .camp-phrase p { font-size:clamp(17px,2.2vw,22px);font-weight:700;font-style:italic;color:var(--tx2);max-width:720px;margin:0 auto;line-height:1.65;border-left:4px solid var(--am);padding:18px 28px;background:linear-gradient(135deg,rgba(247,194,5,.08),rgba(247,194,5,.02));border-radius:0 var(--r) var(--r) 0; }
+    .camp-grid { display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:22px; }
+    .camp-card { background:linear-gradient(150deg,rgba(247,194,5,.22) 0%,#fff 55%);border-radius:var(--rl);padding:38px 30px;border:2px solid rgba(247,194,5,.6);transition:all var(--t);position:relative;overflow:hidden;box-shadow:0 4px 20px rgba(247,194,5,.22); }
+    .camp-card::after { content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--am),var(--ce));transform:scaleX(0);transition:transform var(--t); }
+    .camp-card:hover { transform:translateY(-6px);box-shadow:0 16px 44px rgba(247,194,5,.16);border-color:rgba(247,194,5,.4); }
+    .camp-card:hover::after { transform:scaleX(1); }
+    .camp-emo { font-size:40px;display:block;margin-bottom:16px; }
+    .camp-card h3 { font-size:17px;font-weight:800;color:var(--tx);margin-bottom:10px; }
+    .camp-card p  { color:var(--tx2);font-size:14px;line-height:1.8; }
+    .camp-badge { display:inline-block;margin-top:14px;background:rgba(247,194,5,.18);color:var(--am-dk);font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1px;padding:4px 12px;border-radius:50px;border:1px solid rgba(247,194,5,.3); }
+
+    /* CÓMO AYUDAR */
+    #como-ay { background:var(--bg); }
+    .ay-hd { text-align:center;max-width:580px;margin:0 auto 64px; }
+    .ay-grid { display:grid;grid-template-columns:1fr 1fr;gap:36px; }
+    .ay-card { border-radius:var(--rl);padding:50px 42px;background:linear-gradient(145deg,rgba(247,194,5,.32) 0%,#fff 55%);box-shadow:0 6px 32px rgba(247,194,5,.32);border:2px solid rgba(247,194,5,.67); }
+    .ay-card.c2 { background:linear-gradient(145deg,rgba(94,224,233,.32) 0%,#fff 55%);box-shadow:0 6px 32px rgba(94,224,233,.32);border-color:rgba(94,224,233,.8); }
+    .ay-emo { font-size:46px;margin-bottom:20px; }
+    .ay-card h3 { font-size:24px;font-weight:900;margin-bottom:16px; }
+    .ay-card > p { color:var(--tx2);line-height:1.85;margin-bottom:24px; }
+    .don-list { display:flex;flex-direction:column;gap:10px;margin-bottom:28px; }
+    .don-item { display:flex;align-items:center;gap:10px;padding:13px 16px;background:var(--bg);border-radius:var(--r);border:1px solid rgba(247,194,5,.25);font-size:14px;font-weight:600; }
+    .don-item::before { content:'✓';width:22px;height:22px;background:var(--am);color:var(--tx);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;flex-shrink:0; }
+    .vol-list { list-style:none;display:flex;flex-direction:column;gap:12px;margin-bottom:28px; }
+    .vol-list li { display:flex;align-items:flex-start;gap:10px;font-size:15px;color:var(--tx2); }
+    .vol-list li::before { content:'→';color:var(--ce-dk);font-weight:900;flex-shrink:0; }
+    .btn-d { display:inline-flex;align-items:center;gap:8px;background:var(--am);color:var(--tx);font-family:'Nunito',sans-serif;font-size:16px;font-weight:800;padding:15px 34px;border-radius:50px;text-decoration:none;transition:all var(--t);box-shadow:0 4px 16px rgba(247,194,5,.28); }
+    .btn-d:hover { background:var(--am-dk);transform:translateY(-3px);box-shadow:0 8px 28px rgba(247,194,5,.4); }
+    .btn-v { display:inline-flex;align-items:center;gap:8px;background:var(--ce);color:#0c3050;font-family:'Nunito',sans-serif;font-size:16px;font-weight:800;padding:15px 34px;border-radius:50px;text-decoration:none;transition:all var(--t);box-shadow:0 4px 16px rgba(94,224,233,.28); }
+    .btn-v:hover { background:var(--ce-dk);transform:translateY(-3px);box-shadow:0 8px 28px rgba(94,224,233,.4); }
+
+    /* TESTIMONIOS */
+    #testimonios { background:var(--bg); }
+    .test-hd { text-align:center;max-width:580px;margin:0 auto 56px; }
+    .test-grid { display:grid;grid-template-columns:1fr;gap:32px; }
+    .test-card-feat { display:grid;grid-template-columns:300px 1fr;background:#fff;border-radius:var(--rl);box-shadow:0 8px 40px rgba(0,0,0,.08);overflow:hidden;border-top:4px solid var(--am);transition:all var(--t); }
+    .test-card-feat:hover { transform:translateY(-4px);box-shadow:0 16px 56px rgba(0,0,0,.12); }
+    .tcf-img { overflow:hidden;background:linear-gradient(135deg,rgba(247,194,5,.1),rgba(94,224,233,.15));flex-shrink:0; }
+    .tcf-img img { width:100%;height:100%;object-fit:cover;display:block;min-height:300px; }
+    .tcf-img.contain img { object-fit:contain; }
+    .tcf-body { padding:48px 48px 40px;display:flex;flex-direction:column;justify-content:space-between;gap:28px; }
+    .tcf-quote p { font-size:clamp(15px,1.7vw,17px);line-height:1.95;color:var(--tx);font-style:italic;font-weight:600; }
+    .tcf-quote p+p { margin-top:16px; }
+    .tcf-autor { display:flex;align-items:center;gap:16px;padding-top:22px;border-top:1px solid rgba(0,0,0,.07); }
+    .tcf-av { width:48px;height:48px;border-radius:50%;flex-shrink:0;background:linear-gradient(135deg,var(--am),var(--ce));display:flex;align-items:center;justify-content:center;font-size:18px;color:#fff;font-weight:800; }
+    .tcf-name { font-size:15px;font-weight:800;color:var(--tx); }
+    .tcf-loc  { font-size:13px;color:var(--tx2);margin-top:2px; }
+    .test-nota { text-align:center;margin-top:36px;padding:20px 28px;background:rgba(94,224,233,.08);border-radius:var(--r);color:#888;font-size:14px;font-style:italic;border:1px solid rgba(94,224,233,.15); }
+
+    /* GALERÍA */
+    #galeria { background:#fff; }
+    .gal-hd { text-align:center;max-width:580px;margin:0 auto 52px; }
+    .gal-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:14px; }
+    .gal-item { aspect-ratio:1;border-radius:var(--r);overflow:hidden;transition:all var(--t); }
+    .gal-item img { width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease; }
+    .gal-item:hover img { transform:scale(1.05); }
+    .gal-item.feat { grid-column:span 2;grid-row:span 2; }
+
+    /* CONTACTO */
+    #contacto { background:linear-gradient(135deg,#0e1629 0%,#0f3460 100%);color:#fff; }
+    .con-grid { display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start; }
+    .con-info .tag { background:rgba(94,224,233,.15);color:var(--ce); }
+    .con-info h2 { font-size:clamp(26px,3.5vw,42px);font-weight:900;line-height:1.2;margin-bottom:18px;color:#fff; }
+    .con-info > p { color:rgba(255,255,255,.68);font-size:16px;line-height:1.85;margin-bottom:34px; }
+    .con-datos { display:flex;flex-direction:column;gap:22px; }
+    .con-row { display:flex!important;align-items:center;gap:16px;padding:0!important;margin:0;background:none!important;background-color:transparent!important;border:none!important;box-shadow:none!important;border-radius:0!important;text-decoration:none;color:#fff;transition:color .25s ease;-webkit-appearance:none;appearance:none; }
+    .con-row:hover,.con-row:focus { background:none!important;background-color:transparent!important;color:var(--am);outline:none; }
+    .con-row:hover .val,.con-row:focus .val { color:var(--am); }
+    .con-ico { font-size:22px;flex-shrink:0;opacity:.85; }
+    .con-row-txt .lbl { font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;color:rgba(255,255,255,.38)!important;display:block;margin-bottom:2px; }
+    .con-row-txt .val { font-size:16px;font-weight:600;display:block;color:rgba(255,255,255,.92)!important;transition:color .25s ease;background:none!important;box-shadow:none!important;padding:0!important;border-radius:0!important; }
+    .con-redes { margin-top:28px; }
+    .con-redes h3 { font-size:17px;font-weight:800;margin-bottom:16px; }
+    .redes-btns { display:flex;gap:10px;flex-wrap:wrap; }
+    .red-ig { display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:50px;text-decoration:none;font-size:14px;font-weight:700;transition:all var(--t);background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:#fff; }
+    .red-fb { display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:50px;text-decoration:none;font-size:14px;font-weight:700;transition:all var(--t);background:#1877f2;color:#fff; }
+    .red-ig:hover,.red-fb:hover { transform:translateY(-3px);box-shadow:0 6px 20px rgba(0,0,0,.3); }
+    /* FOTO CONTACTO */
+    .con-foto { border-radius:var(--rl);overflow:hidden;box-shadow:0 8px 48px rgba(0,0,0,.35); }
+    .con-foto img { width:100%;height:100%;object-fit:cover;object-position:center top;display:block;min-height:420px;max-height:520px; }
+
+    /* FOOTER */
+    footer { background:#090d18;padding:56px 24px 32px; }
+    .ft-in { max-width:1200px;margin:0 auto; }
+    .ft-top { display:flex;justify-content:space-between;align-items:flex-start;gap:40px;margin-bottom:40px;flex-wrap:wrap; }
+    .ft-brand { display:flex;flex-direction:column;gap:10px; }
+    .ft-logo { display:flex;align-items:center;gap:10px; }
+    .ft-name { font-size:15px;font-weight:800;color:#fff; }
+    .ft-sub  { font-size:11px;color:rgba(255,255,255,.35);letter-spacing:.5px; }
+    .ft-brand p { font-size:14px;color:rgba(255,255,255,.4);max-width:260px;line-height:1.7; }
+    .ft-col h4 { color:#fff;font-size:14px;font-weight:800;margin-bottom:14px; }
+    .ft-col ul { list-style:none;display:flex;flex-direction:column;gap:7px; }
+    .ft-col a  { color:rgba(255,255,255,.42);text-decoration:none;font-size:14px;transition:color var(--t); }
+    .ft-col a:hover { color:var(--am); }
+    .ft-col p  { color:rgba(255,255,255,.42);font-size:14px;margin-bottom:5px; }
+    .ft-div { height:1px;background:rgba(255,255,255,.07);margin-bottom:24px; }
+    .ft-bot { display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;color:rgba(255,255,255,.28);font-size:13px; }
+    .ft-bot em { color:var(--am);font-style:normal; }
+
+    /* RESPONSIVE */
+    @media (max-width:900px) {
+      .nos-grid,.imp-grid,.con-grid { grid-template-columns:1fr;gap:48px; }
+      .ay-grid,.mv-grid { grid-template-columns:1fr; }
+      .nos-img-wrap { order:-1; }
+      .nos-badge { right:0;bottom:-10px; }
+      .tl::before { display:block;left:28px; }
+      .tl-item { gap:22px; }
+      .tl-num { width:56px;height:56px;font-size:20px; }
+      .test-card-feat { grid-template-columns:1fr; }
+      .tcf-img img { min-height:240px;max-height:300px; }
+      .tcf-body { padding:32px 28px 28px; }
+      .test-grid { grid-template-columns:1fr; }
+      .mv-card { padding:38px 30px; }
+      .ctx-card:nth-child(1),.ctx-card:nth-child(2),.ctx-card:nth-child(3) { border-width:1.5px; }
+    }
+    @media (max-width:768px) {
+      section { padding:64px 18px; }
+      .wrap { padding:0 2px; }
+      .nav-ul { display:none; }
+      .burger { display:flex; }
+      .gal-grid { grid-template-columns:1fr 1fr; }
+      .gal-item.feat { grid-column:span 2;grid-row:span 1; }
+      .nos-vals { grid-template-columns:1fr; }
+      .imp-stats { grid-template-columns:1fr 1fr; }
+      .ay-card { padding:32px 24px; }
+      .qh-card { padding:32px 22px; }
+      .camp-card { padding:30px 22px; }
+      .ctx-cita { padding:36px 24px; }
+      .tcf-body { padding:28px 22px 24px; }
+      .con-grid { gap:36px; }
+      .hero-stat { font-size:13px;padding:10px 20px; }
+    }
+    @media (max-width:480px) {
+      section { padding:56px 16px; }
+      .hero-btns { flex-direction:column;align-items:center; }
+      .hero-btns .btn-a,.hero-btns .btn-b { width:100%;justify-content:center; }
+      .imp-stats { grid-template-columns:1fr; }
+      .stat.feat { grid-column:span 1; }
+      .gal-grid { grid-template-columns:1fr; }
+      .gal-item.feat { grid-column:span 1; }
+      .ft-top { flex-direction:column; }
+      .casa-block { flex-direction:column;text-align:center; }
+      .nos-badge { position:static;margin-top:16px;display:inline-block; }
+      .mv-card { padding:30px 20px; }
+      .qh-card { padding:28px 18px; }
+      .camp-card { padding:26px 18px; }
+      .ay-card { padding:28px 18px; }
+      .tcf-body { padding:22px 18px 20px; }
+      .ctx-cita { padding:28px 18px; }
+      .tl-ct { padding-top:4px; }
+      .dir-grid { grid-template-columns:1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+<div id="prog"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-in">
+    <a href="#hero" class="logo">
+      <img src="assets/oncosur/logo.jpg" alt="Logo Fundación Oncosur" class="logo-real">
+    </a>
+    <ul class="nav-ul">
+      <li><a href="#nosotros">Nosotros</a></li>
+      <li><a href="#que-hacemos">Qué hacemos</a></li>
+      <li><a href="#impacto">Impacto</a></li>
+      <li><a href="#campanas">Campañas</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+      <li><a href="#como-ay" class="btn-n">Cómo ayudar</a></li>
+    </ul>
+    <div class="burger" id="burger"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+
+<!-- Mobile menu -->
+<div class="mob" id="mob">
+  <a href="#nosotros"     onclick="closeMob()">Nosotros</a>
+  <a href="#mision"      onclick="closeMob()">Misión y Visión</a>
+  <a href="#que-hacemos"  onclick="closeMob()">Qué hacemos</a>
+  <a href="#impacto"     onclick="closeMob()">Impacto</a>
+  <a href="#campanas"    onclick="closeMob()">Campañas</a>
+  <a href="#testimonios"  onclick="closeMob()">Testimonios</a>
+  <a href="#contacto"    onclick="closeMob()">Contacto</a>
+  <a href="#como-ay" class="mbtn" onclick="closeMob()">Cómo ayudar ♥</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-slides">
+    <div class="hs hs-active" style="background-image:url('assets/oncosur/navidad-ninos-hospital.jpg')"></div>
+    <div class="hs" style="background-image:url('assets/oncosur/celebracion-familias.jpg')"></div>
+    <div class="hs" style="background-image:url('assets/oncosur/ninos-alas-parque.jpg')"></div>
+    <div class="hs" style="background-image:url('assets/oncosur/manos-unidas-pulseras.jpg')"></div>
+    <div class="hs" style="background-image:url('assets/oncosur/nina-hospital-sonrisa.jpg')"></div>
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hblob b1"></div>
+  <div class="hblob b2"></div>
+  <div id="stars"></div>
+  <div class="wrap">
+    <div class="hero-ct">
+      <div class="hero-logo-block fi">
+        <img src="assets/oncosur/logo.jpg" alt="Logo Fundación Oncosur" class="logo-real-hero" loading="eager" fetchpriority="high" decoding="sync">
+      </div>
+      <h1 class="hero-h1 fi d1"><em>Unidos</em> por el cáncer infantil</h1>
+      <p class="hero-sub fi d2">Acompañamos a niños y familias del sur de Chile en uno de los momentos más difíciles de sus vidas.</p>
+      <div class="hero-stat fi d3">Más del 60% de las familias llegan desde fuera de Valdivia. No están solas.</div>
+      <div class="hero-btns fi d4">
+        <a href="#como-ay" class="btn-a">♥ Cómo ayudar</a>
+        <a href="#nosotros" class="btn-b">Conocer más →</a>
+      </div>
+    </div>
+  </div>
+  <div class="hero-dots" id="heroDots"></div>
+  <div class="scroll-ind"><div class="arr"></div></div>
+</section>
+
+<!-- CONTEXTO -->
+<section id="contexto">
+  <div class="wrap">
+    <div class="ctx-intro fi">
+      <div class="tag">Por qué importa el sur</div>
+      <h2 class="stit">El sur de Chile tiene sus propios <em>desafíos</em></h2>
+      <p class="ssub">Cuando una familia recibe el diagnóstico de cáncer infantil en el sur de Chile, la distancia, el clima y las barreras de acceso se suman a la enfermedad.</p>
+    </div>
+    <div class="ctx-cards">
+      <div class="ctx-card fi d1"><div class="ctx-ico">🗺️</div><h3>Distancias que se hacen largas</h3><p>Muchas familias deben viajar cientos de kilómetros para acceder a tratamiento oncológico. Llegar al Hospital Base de Valdivia significa, muchas veces, abandonar el hogar, el trabajo y la red de apoyo habitual.</p></div>
+      <div class="ctx-card fi d2"><div class="ctx-ico">🌧️</div><h3>Clima que no da tregua</h3><p>El frío, la lluvia y el viento del sur no se detienen durante el tratamiento. Para una familia que ya enfrenta una situación de alta exigencia, cada traslado y cada visita al hospital implica un esfuerzo adicional.</p></div>
+      <div class="ctx-card fi d3"><div class="ctx-ico">🏥</div><h3>Dificultad de acceso al tratamiento</h3><p>El sistema de salud oncológica pediátrica en la macrozona sur exige desplazamientos continuos, hospedaje y gastos imprevistos. Las familias llegan solas, sin red, sin saber bien a dónde ir ni a quién recurrir.</p></div>
+    </div>
+    <div class="ctx-cita fi"><p>"Es en ese momento cuando aparece Fundación Oncosur: para que <em>ninguna familia navegue sola</em> por el cáncer infantil en el sur de Chile."</p></div>
+  </div>
+</section>
+
+<!-- NOSOTROS -->
+<section id="nosotros">
+  <div class="wrap">
+    <div class="nos-grid">
+      <div class="nos-img-wrap fi-l">
+        <div class="nos-ph">
+          <img src="assets/oncosur/equipo-oncosur.png" alt="Equipo y actividades Fundación Oncosur" loading="lazy">
+        </div>
+        <div class="nos-badge"><span class="yr">2022</span>Año de<br>fundación</div>
+      </div>
+      <div class="fi-r">
+        <div class="tag">Nuestra experiencia oncológica</div>
+        <h2 class="stit">Construida desde la experiencia vivida</h2>
+        <p>Fundación Oncosur nació en 2022, impulsada por cinco familias que transitaron de primera mano el cáncer infantil en el sur de Chile. Familias que conocen el proceso, los silencios del hospital y la importancia de contar con acompañamiento en cada etapa.</p>
+        <p>Todas las familias fundadoras vivieron tratamientos oncológicos en la unidad de hemato-oncología infantil vinculados al <strong>Hospital Base de Valdivia</strong>, y desde esa experiencia compartida nació la certeza: que el acompañamiento marca la diferencia.</p>
+        <p>Por eso decidieron organizarse y construir una red de apoyo real para quienes hoy transitan el mismo camino, con dignidad y comunidad como ejes centrales.</p>
+        <div class="nos-vals">
+          <div class="val"><span class="val-ico">💛</span> Cercanía real</div>
+          <div class="val"><span class="val-ico">🤝</span> Acompañamiento digno</div>
+          <div class="val"><span class="val-ico">🌿</span> Respeto al proceso</div>
+          <div class="val"><span class="val-ico">🏡</span> Identidad del sur</div>
+        </div>
+        <div class="dir-title">Directiva actual</div>
+        <div class="dir-foto-wrap fi">
+          <img src="assets/oncosur/fotodirectivaactual.jpeg"
+               alt="Directiva Fundación Oncosur"
+               class="dir-foto"
+               onerror="this.parentElement.innerHTML='<div class=\'dir-foto-ph\'><span>👥</span><p>Foto del equipo directivo</p></div>'">
+        </div>
+        <div class="dir-grid">
+          <div class="dir-card"><div class="dir-av">P</div><div class="dir-name">Patricia Elorz</div><div class="dir-role">Presidenta</div></div>
+          <div class="dir-card"><div class="dir-av">K</div><div class="dir-name">Katherine Rossel</div><div class="dir-role">Vicepresidenta</div></div>
+          <div class="dir-card"><div class="dir-av">B</div><div class="dir-name">Bárbara Arévalo</div><div class="dir-role">Tesorera</div></div>
+          <div class="dir-card"><div class="dir-av">M</div><div class="dir-name">Marcela Burgos</div><div class="dir-role">Secretaria</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MISIÓN Y VISIÓN -->
+<section id="mision">
+  <div class="wrap">
+    <div class="mv-hd fi">
+      <div class="tag">Propósito</div>
+      <h2 class="stit">Nuestra <em>misión y visión</em></h2>
+      <p class="ssub">Lo que nos mueve y hacia dónde queremos llegar como organización.</p>
+    </div>
+    <div class="mv-grid">
+      <div class="mv-card mision fi-l"><div class="mv-ico">🎯</div><h3>Misión</h3><p>Brindar apoyo integral, humano y solidario a niñas, niños y adolescentes en tratamiento oncológico, así como a sus familias, en el Hospital Base de Valdivia. Como organización sin fines de lucro, trabajamos para acompañar, contener y mejorar la calidad de vida durante el proceso de tratamiento, fomentando redes de apoyo, conciencia social y el respeto por la dignidad de cada persona.</p></div>
+      <div class="mv-card vision fi-r"><div class="mv-ico">🌟</div><h3>Visión</h3><p>Ser una organización referente en el acompañamiento y apoyo a familias con hijos e hijas en tratamiento oncológico en el sur de Chile, promoviendo una comunidad solidaria, empática y comprometida, que actúe con responsabilidad social y trabaje por una atención digna y humana para cada niño, niña y su familia.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- QUÉ HACEMOS -->
+<section id="que-hacemos">
+  <div class="wrap">
+    <div class="qh-hd fi">
+      <div class="tag">Nuestro trabajo</div>
+      <h2 class="stit">Lo que hacemos, <em>cada día</em></h2>
+      <p class="ssub">Nuestro acompañamiento es concreto, humano y continuo. Estamos donde se nos necesita.</p>
+    </div>
+    <div class="qh-grid">
+      <div class="qh-card fi d1"><span class="qh-tag">Presencia</span><span class="qh-emo">🏥</span><h3>Apoyo en hospital</h3><p>Acompañamos a las familias durante las visitas y hospitalizaciones en el Hospital Base de Valdivia. Estamos presentes en los momentos de espera y en los días más difíciles.</p></div>
+      <div class="qh-card fi d2"><span class="qh-tag">Apoyo directo</span><span class="qh-emo">🎁</span><h3>Apoyo a familias</h3><p>Entregamos kits de acogida, orientación práctica y apoyo con traslados y gestiones. Porque las necesidades de una familia en tratamiento van mucho más allá de lo médico.</p></div>
+      <div class="qh-card fi d3"><span class="qh-tag">Bienestar</span><span class="qh-emo">🧠</span><h3>Salud mental</h3><p>Acompañamos el proceso emocional de niños, padres y hermanos. El diagnóstico moviliza a toda la familia, y cada integrante necesita espacios para procesar lo que está viviendo.</p></div>
+      <div class="qh-card fi d4"><span class="qh-tag">Integral</span><span class="qh-emo">🌱</span><h3>Acompañamiento integral</h3><p>Desde el diagnóstico hasta después del tratamiento. No desaparecemos. Seguimos el proceso de cada familia con continuidad, respeto y presencia real a lo largo del tiempo.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CÓMO ACOMPAÑAMOS -->
+<section id="como-ac">
+  <div class="wrap">
+    <div class="ac-hd fi">
+      <div class="tag">El proceso</div>
+      <h2 class="stit">¿Cómo acompañamos a cada familia?</h2>
+      <p class="ssub">Cada familia es única. Pero hay un camino que recorremos juntos desde el primer día.</p>
+    </div>
+    <div class="tl">
+      <div class="tl-item fi d1"><div class="tl-num">1</div><div class="tl-ct"><h3>Llegada al hospital</h3><p>Una familia llega con un diagnóstico reciente. Todo es nuevo, el entorno es desconocido y las preguntas se acumulan. El peso del proceso apenas comienza.</p></div></div>
+      <div class="tl-item fi d2"><div class="tl-num">2</div><div class="tl-ct"><h3>Primer contacto con Fundación Oncosur</h3><p>Alguien del equipo se acerca con calma y sin apuro. Sin formularios ni protocolos fríos. El primer contacto es humano y cercano: una presencia que dice "aquí estamos".</p></div></div>
+      <div class="tl-item fi d3"><div class="tl-num">3</div><div class="tl-ct"><h3>Entrega de apoyo concreto</h3><p>Un kit de acogida, orientación sobre el proceso, información sobre derechos y recursos disponibles. Casa Oncosur abre sus puertas para el descanso y la contención diaria.</p></div></div>
+      <div class="tl-item fi d4"><div class="tl-num">4</div><div class="tl-ct"><h3>Seguimiento continuo</h3><p>No somos una intervención puntual. Seguimos presentes durante todo el proceso: hospitalizaciones, altas y también en los momentos de recuperación. Estamos para el largo camino.</p></div></div>
+    </div>
+    <div class="tl-nota fi"><p>"Cada proceso respeta la individualidad de cada familia. No hay un guión único."</p></div>
+  </div>
+</section>
+
+<!-- IMPACTO -->
+<section id="impacto">
+  <div class="wrap">
+    <div class="imp-grid">
+      <div class="fi-l">
+        <div class="imp-stats">
+          <div class="stat"><div class="stat-n" data-count="50">0</div><div class="stat-l">Familias al año</div></div>
+          <div class="stat"><div class="stat-n" data-count="120">0</div><div class="stat-l">Niños beneficiados</div></div>
+          <div class="stat feat"><div class="stat-n">Macrozona Sur</div><div class="stat-l">Cobertura territorial</div></div>
+          <div class="stat"><div class="stat-n">2022</div><div class="stat-l">Año de fundación</div></div>
+          <div class="stat"><div class="stat-n">100%</div><div class="stat-l">Sin fines de lucro</div></div>
+        </div>
+        <div class="casa-block"><div class="casa-ico">🏠</div><div><h3>Casa Oncosur</h3><p>Casa de acogida diurna para niños en tratamiento y sus familias en el Hospital Base de Valdivia.</p><span class="casa-stat">70 desayunos mensuales entregados</span></div></div>
+      </div>
+      <div class="imp-txt fi-r">
+        <div class="tag">Nuestro impacto</div>
+        <h2>El acompañamiento <em style="color:var(--am-dk);font-style:normal">cambia la experiencia</em></h2>
+        <p>Detrás de cada cifra hay una historia real: una familia que tuvo un lugar donde descansar, una mano que orientó en un momento de incertidumbre, un desayuno que hizo más liviano un día difícil.</p>
+        <p>El cáncer infantil en el sur de Chile enfrenta barreras que otras regiones no tienen. <strong>Nuestra presencia reduce el impacto de esas barreras con acciones concretas y continuas.</strong></p>
+        <p>Casa Oncosur es el corazón de ese acompañamiento diario: un espacio seguro, cálido y humano dentro del proceso de tratamiento.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COLABORADORES -->
+<section id="colaboradores">
+  <div class="wrap">
+    <div class="col-hd fi">
+      <div class="tag">Red de apoyo</div>
+      <h2 class="stit">Colaboradores y <em>vinculación</em></h2>
+      <p class="ssub">Somos parte de una red que entiende que el cuidado integral requiere muchas manos y muchas voces.</p>
+    </div>
+    <div class="col-grid">
+      <div class="col-card fi d1"><div class="col-ico">🏥</div><h3>Hospital Base Valdivia</h3><p>Oncología pediátrica</p></div>
+      <div class="col-card fi d2"><div class="col-ico">🏫</div><h3>Escuelita Hospitalaria</h3><p>Continuidad educativa en tratamiento</p></div>
+      <div class="col-card fi d3"><div class="col-ico">🎓</div><h3>Instituciones educativas</h3><p>Vínculos con establecimientos del sur</p></div>
+      <div class="col-card fi d4"><div class="col-ico">🤝</div><h3>Organizaciones sociales</h3><p>Redes comunitarias del sur</p></div>
+      <div class="col-card fi d5"><div class="col-ico">🌐</div><h3>Red de hospitales del sur</h3><p>Coordinación regional de salud</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CAMPAÑAS -->
+<section id="campanas">
+  <div class="wrap">
+    <div class="camp-hd fi">
+      <div class="tag">Campañas</div>
+      <h2 class="stit">Campañas <em>destacadas</em></h2>
+      <p class="ssub">Iniciativas concretas con las que puedes sumarte y hacer diferencia desde donde estás.</p>
+    </div>
+    <div class="camp-phrase fi"><p>Cada campaña permite que una familia tenga un día más digno durante su tratamiento.</p></div>
+    <div class="camp-grid">
+      <div class="camp-card fi d1"><span class="camp-emo">☕</span><h3>Dona un desayuno</h3><p>Cada día, familias que acompañan a sus hijos en tratamiento comienzan la jornada en Casa Oncosur. Tu donación pone el desayuno en esa mesa.</p><span class="camp-badge">Campaña permanente</span></div>
+      <div class="camp-card fi d2"><span class="camp-emo">🧼</span><h3>Dona kit de acogida</h3><p>Al llegar al hospital, las familias reciben un kit con artículos de primera necesidad. Ayuda a que ese primer día sea un poco más amable.</p><span class="camp-badge">Campaña activa</span></div>
+      <div class="camp-card fi d3"><span class="camp-emo">🧸</span><h3>Campaña de pijamas</h3><p>Durante las hospitalizaciones, los niños necesitan ropa cómoda. Esta campaña reúne pijamas nuevos para quienes más los necesitan.</p><span class="camp-badge">Campaña recurrente</span></div>
+      <div class="camp-card fi d4"><span class="camp-emo">🎈</span><h3>Día del niño</h3><p>Una jornada especial para que los niños en tratamiento y sus familias tengan un momento de alegría, juego y celebración.</p><span class="camp-badge">Campaña anual</span></div>
+      <div class="camp-card fi d5"><span class="camp-emo">🎄</span><h3>Navidad</h3><p>En diciembre, ningún niño en tratamiento debería estar sin la magia de la Navidad. Campaña de regalos y actividades para fin de año.</p><span class="camp-badge">Campaña anual</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CÓMO AYUDAR -->
+<section id="como-ay">
+  <div class="wrap">
+    <div class="ay-hd fi">
+      <div class="tag">Únete</div>
+      <h2 class="stit">Cada aporte <em>importa</em></h2>
+      <p class="ssub">No hay una forma única de ayudar. Todo suma y todo llega a quienes más lo necesitan.</p>
+    </div>
+    <div class="ay-grid">
+      <div class="ay-card fi-l">
+        <div class="ay-emo">💛</div>
+        <h3>Donaciones</h3>
+        <p>Tu aporte nos permite estar presentes, entregar kits, mantener Casa Oncosur y cubrir las necesidades cotidianas de las familias en tratamiento.</p>
+        <div class="don-list">
+          <div class="don-item">Socio desde $10.000 mensuales</div>
+          <div class="don-item">Donación única en cualquier monto</div>
+          <div class="don-item">Donaciones en especie (campañas activas)</div>
+        </div>
+        <a href="https://oncosur.donando.cl" target="_blank" rel="noopener" class="btn-d">💛 Donar ahora</a>
+      </div>
+      <div class="ay-card c2 fi-r">
+        <div class="ay-emo">🙌</div>
+        <h3>Voluntariado y difusión</h3>
+        <p>Puedes ayudar sin dinero. Compartir nuestra historia, sumarte como voluntario o conectarnos con organizaciones que puedan apoyar son formas reales de construir comunidad.</p>
+        <ul class="vol-list">
+          <li>Voluntariado en hospital y actividades</li>
+          <li>Difusión en redes sociales y comunidad</li>
+          <li>Apoyo profesional (psicología, diseño, comunicaciones)</li>
+          <li>Conexión con empresas y organizaciones</li>
+        </ul>
+        <a href="mailto:contacto.oncosur@gmail.com" class="btn-v">🙌 Quiero ser voluntario</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIOS -->
+<section id="testimonios">
+  <div class="wrap">
+    <div class="test-hd fi">
+      <div class="tag">Voces reales</div>
+      <h2 class="stit">Las familias <em>nos cuentan</em></h2>
+      <p class="ssub">Nada describe mejor nuestro trabajo que las palabras de quienes lo vivieron.</p>
+    </div>
+    <div class="test-grid">
+
+      <!-- Testimonio destacado: Familia González - Silva -->
+      <div class="test-card-feat fi d1">
+        <div class="tcf-img">
+          <img src="assets/oncosur/familia-gonzalez-silva.jpg"
+               alt="Familia González - Silva, Trinidad y Jeanette"
+               loading="lazy"
+               onerror="this.parentElement.style.background='linear-gradient(135deg,rgba(247,194,5,.1),rgba(94,224,233,.18))';this.style.display='none'">
+        </div>
+        <div class="tcf-body">
+          <div class="tcf-quote">
+            <p>"En plena pandemia, llegamos desde Puerto Montt al Hospital Base Valdivia tras la cirugía cerebral de nuestra hija Trinidad, de 3 años. Sin red de apoyo, enfrentamos largas esperas y el frío en nuestro auto, hasta que Oncosur nos abrió las puertas de su casa de acogida.</p>
+            <p>Ese gesto cambió todo: nos brindó descanso, alimento y el acompañamiento que tanto necesitábamos. Hoy, Trinidad tiene 8 años y ha superado la enfermedad. Para nosotros, el apoyo de la fundación fue y sigue siendo fundamental para sobrellevar los momentos más difíciles de nuestras vidas."</p>
+          </div>
+          <div class="tcf-autor">
+            <div class="tcf-av">J</div>
+            <div>
+              <div class="tcf-name">Familia González - Silva</div>
+              <div class="tcf-loc"><strong>Jeanette Silva</strong>, mamá de Trinidad · Puerto Montt</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonio: Paola Castillo -->
+      <div class="test-card-feat fi d2">
+        <div class="tcf-img contain">
+          <img src="assets/oncosur/fotoresena.jpeg"
+               alt="Paola Castillo, mamá de Maxi"
+               loading="lazy"
+               onerror="this.parentElement.style.background='linear-gradient(135deg,rgba(247,194,5,.1),rgba(94,224,233,.18))';this.style.display='none'">
+        </div>
+        <div class="tcf-body">
+          <div class="tcf-quote">
+            <p>"En 2023, mi hijo Maxi fue diagnosticado con leucemia linfoblástica aguda tipo T. Todavía continuamos su tratamiento aquí en Valdivia y ha sido un camino difícil. Sin embargo, desde el momento en que llegamos a la Fundación Oncosur, nos brindaron un apoyo invaluable. Su respaldo, tanto en lo económico como en la contención emocional, ha sido un verdadero salvavidas para nosotros. Nos hicieron sentir que no estamos solos en esta lucha."</p>
+          </div>
+          <div class="tcf-autor">
+            <div class="tcf-av">P</div>
+            <div>
+              <div class="tcf-name">Paola Castillo</div>
+              <div class="tcf-loc">Mamá de Maxi Rosas Castillo · Valdivia, 2023</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonio: Constanza Lira -->
+      <div class="test-card-feat fi d3">
+        <div class="tcf-img contain">
+          <img src="assets/oncosur/fotoresenaconstanza.jpeg"
+               alt="Constanza Lira, mamá de Enzo"
+               loading="lazy"
+               onerror="this.parentElement.style.background='linear-gradient(135deg,rgba(247,194,5,.1),rgba(94,224,233,.18))';this.style.display='none'">
+        </div>
+        <div class="tcf-body">
+          <div class="tcf-quote">
+            <p>"Soy Constanza Lira, hace 3 meses llegamos a Valdivia desde Chaitén por el diagnóstico de mi hijito Enzo y puedo decir que estamos demasiado agradecidos de Oncosur que nos han apoyado desde el primer momento en muchas formas: apoyo psicológico, dental, insumos, ayudando a encontrar arriendo, información, actividades, llevándonos momentos de distracción y regaloneo al hospital. No puedo explicar lo importante que es no sentirse solo en estos momentos. Gracias por su hermosa y desinteresada labor 🙏🏽"</p>
+          </div>
+          <div class="tcf-autor">
+            <div class="tcf-av">C</div>
+            <div>
+              <div class="tcf-name">Constanza Lira</div>
+              <div class="tcf-loc">Mamá de Enzo · Chaitén → Valdivia, 2025</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="test-nota fi">💡 Todos los testimonios son reales y autorizados por cada familia.</div>
+  </div>
+</section>
+
+<!-- GALERÍA -->
+<section id="galeria">
+  <div class="wrap">
+    <div class="gal-hd fi">
+      <div class="tag">Galería</div>
+      <h2 class="stit">Nuestro trabajo <em>en imágenes</em></h2>
+      <p class="ssub">Momentos reales de acompañamiento, campañas y conexión con las familias.</p>
+    </div>
+    <div class="gal-grid">
+      <div class="gal-item feat fi"><img src="assets/oncosur/manos-unidas-pulseras.jpg" alt="Manos unidas con pulseras rojas" loading="lazy"></div>
+      <div class="gal-item fi d1"><img src="assets/oncosur/navidad-ninos-hospital.jpg" alt="Niños con Papá Noel en hospital" loading="lazy"></div>
+      <div class="gal-item fi d2"><img src="assets/oncosur/nina-hospital-sonrisa.jpg" alt="Niña en hospital sonriendo" loading="lazy"></div>
+      <div class="gal-item fi d3"><img src="assets/oncosur/nino-lentes-hospital.jpg" alt="Niño con lentes en hospital" loading="lazy"></div>
+      <div class="gal-item fi d4"><img src="assets/oncosur/nina-frutilla-hospital.jpg" alt="Niña con frutilla en hospital" loading="lazy"></div>
+      <div class="gal-item fi d5"><img src="assets/oncosur/ninas-jugando.jpg" alt="Niñas jugando" loading="lazy"></div>
+      <div class="gal-item fi d6"><img src="assets/oncosur/ninos-alas-parque.jpg" alt="Niños con alas en parque" loading="lazy"></div>
+      <div class="gal-item fi d7"><img src="assets/oncosur/visita-nino-hospital.jpg" alt="Visita a niño en hospital" loading="lazy"></div>
+      <div class="gal-item fi d8"><img src="assets/oncosur/nino-muneca-artesanal.jpg" alt="Niño con muñeca artesanal" loading="lazy"></div>
+      <div class="gal-item fi d9"><img src="assets/oncosur/celebracion-familias.jpg" alt="Celebración con familias" loading="lazy"></div>
+      <div class="gal-item fi d10"><img src="assets/oncosur/equipo-hospital-oncosur.jpg" alt="Equipo Oncosur en hospital" loading="lazy"></div>
+      <div class="gal-item fi d11"><img src="assets/oncosur/entrega-bolsas-navidad.jpg" alt="Entrega de bolsas navideñas" loading="lazy"></div>
+      <div class="gal-item fi d12"><img src="assets/oncosur/reunion-familias-equipo.jpg" alt="Reunión de familias y equipo" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <div class="wrap">
+    <div class="con-grid">
+      <div class="con-info fi-l">
+        <div class="tag">Contáctanos</div>
+        <h2>Estamos aquí para escucharte</h2>
+        <p>Si tu familia está pasando por el cáncer infantil, si quieres colaborar, o simplemente quieres saber más sobre lo que hacemos, escríbenos. Siempre hay alguien al otro lado.</p>
+        <div class="con-datos">
+          <a href="mailto:contacto.oncosur@gmail.com" class="con-row"><span class="con-ico">✉️</span><div class="con-row-txt"><span class="lbl">Correo electrónico</span><span class="val">contacto.oncosur@gmail.com</span></div></a>
+          <a href="tel:+56987531426" class="con-row"><span class="con-ico">📱</span><div class="con-row-txt"><span class="lbl">Teléfono</span><span class="val">+56 9 8753 1426</span></div></a>
+          <a href="tel:+56999025612" class="con-row"><span class="con-ico">📱</span><div class="con-row-txt"><span class="lbl">Teléfono alternativo</span><span class="val">+56 9 9902 5612</span></div></a>
+          <div class="con-row"><span class="con-ico">📍</span><div class="con-row-txt"><span class="lbl">Ubicación</span><span class="val">Valdivia, Región de Los Ríos, Chile</span></div></div>
+        </div>
+        <div class="con-redes">
+          <h3>Síguenos en redes</h3>
+          <div class="redes-btns">
+            <a href="https://instagram.com/oncosur__" target="_blank" rel="noopener" class="red-ig">📷 @oncosur__</a>
+            <a href="https://www.facebook.com/OncoSurValdivia/" target="_blank" rel="noopener" class="red-fb">👥 Facebook</a>
+          </div>
+        </div>
+      </div>
+      <div class="con-foto fi-r">
+        <img src="assets/oncosur/foto_carla_atman.png"
+             alt="Fundación Oncosur"
+             loading="lazy"
+             onerror="this.parentElement.style.background='linear-gradient(135deg,rgba(94,224,233,.1),rgba(247,194,5,.08))'">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-in">
+    <div class="ft-top">
+      <div class="ft-brand">
+        <div class="ft-logo">
+          <img src="assets/oncosur/logo.jpg" alt="Logo Fundación Oncosur" style="height:80px;width:auto;object-fit:contain;">
+          <div><div class="ft-name">Fundación Oncosur</div><div class="ft-sub">Valdivia · Chile</div></div>
+        </div>
+        <p>Acompañamiento digno a niños con cáncer y sus familias en el sur de Chile.</p>
+      </div>
+      <div class="ft-col">
+        <h4>Navegación</h4>
+        <ul>
+          <li><a href="#nosotros">Nosotros</a></li>
+          <li><a href="#mision">Misión y Visión</a></li>
+          <li><a href="#que-hacemos">Qué hacemos</a></li>
+          <li><a href="#impacto">Impacto</a></li>
+          <li><a href="#campanas">Campañas</a></li>
+          <li><a href="#como-ay">Cómo ayudar</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="ft-col">
+        <h4>Contacto</h4>
+        <p>contacto.oncosur@gmail.com</p>
+        <p>+56 9 8753 1426</p>
+        <p>+56 9 9902 5612</p>
+        <p>Valdivia, Región de Los Ríos</p>
+        <p style="margin-top:10px"><a href="https://instagram.com/oncosur__" target="_blank" rel="noopener">📷 @oncosur__</a></p>
+      </div>
+    </div>
+    <div class="ft-div"></div>
+    <div class="ft-bot">
+      <span>© 2026 Fundación Oncosur · Valdivia, Chile · Organización sin fines de lucro</span>
+      <span>Hecho con <em>♥</em> en el sur de Chile</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    const el=document.getElementById('stars');
+    for(let i=0;i<60;i++){
+      const s=document.createElement('div');s.className='star';
+      const sz=Math.random()*2.5+1;
+      s.style.cssText=`width:${sz}px;height:${sz}px;top:${Math.random()*100}%;left:${Math.random()*100}%;animation-delay:${Math.random()*3}s;animation-duration:${2+Math.random()*2}s`;
+      el.appendChild(s);
+    }
+  })();
+  const prog=document.getElementById('prog'),navEl=document.getElementById('nav');
+  window.addEventListener('scroll',()=>{
+    const d=document.documentElement;
+    prog.style.width=(d.scrollTop/(d.scrollHeight-d.clientHeight)*100)+'%';
+    navEl.classList.toggle('on',d.scrollTop>60);
+  },{passive:true});
+  const io=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target);}});
+  },{threshold:0.1});
+  document.querySelectorAll('.fi,.fi-l,.fi-r').forEach(el=>io.observe(el));
+  const cio=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(!e.isIntersecting)return;
+      const el=e.target,target=parseInt(el.dataset.count);
+      if(isNaN(target))return;
+      let cur=0;const step=Math.ceil(target/50);
+      const t=setInterval(()=>{cur=Math.min(cur+step,target);el.textContent='+'+cur;if(cur>=target)clearInterval(t);},35);
+      cio.unobserve(el);
+    });
+  },{threshold:0.5});
+  document.querySelectorAll('[data-count]').forEach(el=>cio.observe(el));
+  const burger=document.getElementById('burger'),mob=document.getElementById('mob');
+  burger.addEventListener('click',()=>{burger.classList.toggle('op');mob.classList.toggle('op');document.body.style.overflow=mob.classList.contains('op')?'hidden':'';});
+  function closeMob(){burger.classList.remove('op');mob.classList.remove('op');document.body.style.overflow='';}
+  (function(){
+    const slides=document.querySelectorAll('.hs');
+    const dotsWrap=document.getElementById('heroDots');
+    if(!slides.length)return;
+    let cur=0,timer;
+    slides.forEach((_,i)=>{
+      const d=document.createElement('button');
+      d.className='hero-dot'+(i===0?' active':'');
+      d.setAttribute('aria-label','Slide '+(i+1));
+      d.addEventListener('click',()=>goTo(i));
+      dotsWrap.appendChild(d);
+    });
+    function goTo(n){
+      clearTimeout(timer);
+      slides[cur].classList.remove('hs-active');
+      slides[cur].classList.add('hs-out');
+      const prev=cur;
+      setTimeout(()=>slides[prev].classList.remove('hs-out'),1400);
+      dotsWrap.children[cur].classList.remove('active');
+      cur=n;
+      slides[cur].classList.add('hs-active');
+      dotsWrap.children[cur].classList.add('active');
+      timer=setTimeout(next,5000);
+    }
+    function next(){goTo((cur+1)%slides.length);}
+    timer=setTimeout(next,5000);
+  })();
+
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"NGO","name":"Fundación Oncosur","description":"Fundación Oncosur entrega apoyo, acompañamiento e información para personas y familias relacionadas con el cáncer en Valdivia.","url":"https://oncosur.netlify.app","foundingDate":"2022","address":{"@type":"PostalAddress","addressLocality":"Valdivia","addressRegion":"Los Ríos","addressCountry":"CL"},"contactPoint":[{"@type":"ContactPoint","telephone":"+56987531426","email":"contacto.oncosur@gmail.com","contactType":"customer support","availableLanguage":"Spanish"}],"sameAs":["https://www.instagram.com/oncosur__/","https://www.facebook.com/OncoSurValdivia/"]}
+</script>
+</body>
+</html>
