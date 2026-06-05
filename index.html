@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -366,6 +366,16 @@
       .con-grid { gap:36px; }
       .hero-stat { font-size:13px;padding:10px 20px; }
     }
+    .camp-status { display:inline-flex;align-items:center;gap:7px;margin-top:14px;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1px;padding:5px 13px;border-radius:50px; }
+    .camp-status.activa { background:rgba(34,197,94,.13);color:#16a34a;border:1px solid rgba(34,197,94,.32); }
+    .camp-status.inactiva { background:rgba(156,163,175,.11);color:#9ca3af;border:1px solid rgba(156,163,175,.22); }
+    .camp-dot { width:8px;height:8px;border-radius:50%;flex-shrink:0; }
+    .camp-dot.verde { background:#22c55e;animation:pulso-verde 2s ease-in-out infinite; }
+    .camp-dot.gris { background:#d1d5db; }
+    @keyframes pulso-verde { 0%,100%{box-shadow:0 0 0 0 rgba(34,197,94,.5);}50%{box-shadow:0 0 0 7px rgba(34,197,94,0);} }
+    .camp-link { text-decoration:none;display:block; }
+    .camp-link:hover .camp-card { transform:translateY(-8px);box-shadow:0 20px 56px rgba(34,197,94,.18);border-color:rgba(34,197,94,.5)!important; }
+
     @media (max-width:480px) {
       section { padding:56px 16px; }
       .hero-btns { flex-direction:column;align-items:center; }
@@ -395,7 +405,7 @@
 <nav id="nav">
   <div class="nav-in">
     <a href="#hero" class="logo">
-      <img src="assets/oncosur/logo.jpg" alt="Logo Fundación Oncosur" class="logo-real">
+      <img src="../assets/oncosur/logo.jpg" alt="Logo Fundación Oncosur" class="logo-real">
     </a>
     <ul class="nav-ul">
       <li><a href="#nosotros">Nosotros</a></li>
@@ -424,11 +434,11 @@
 <!-- HERO -->
 <section id="hero">
   <div class="hero-slides">
-    <div class="hs hs-active" style="background-image:url('assets/oncosur/navidad-ninos-hospital.jpg')"></div>
-    <div class="hs" style="background-image:url('assets/oncosur/celebracion-familias.jpg')"></div>
-    <div class="hs" style="background-image:url('assets/oncosur/ninos-alas-parque.jpg')"></div>
-    <div class="hs" style="background-image:url('assets/oncosur/manos-unidas-pulseras.jpg')"></div>
-    <div class="hs" style="background-image:url('assets/oncosur/nina-hospital-sonrisa.jpg')"></div>
+    <div class="hs hs-active" style="background-image:url('../assets/oncosur/navidad-ninos-hospital.jpg')"></div>
+    <div class="hs" style="background-image:url('../assets/oncosur/celebracion-familias.jpg')"></div>
+    <div class="hs" style="background-image:url('../assets/oncosur/ninos-alas-parque.jpg')"></div>
+    <div class="hs" style="background-image:url('../assets/oncosur/manos-unidas-pulseras.jpg')"></div>
+    <div class="hs" style="background-image:url('../assets/oncosur/nina-hospital-sonrisa.jpg')"></div>
   </div>
   <div class="hero-overlay"></div>
   <div class="hblob b1"></div>
@@ -437,7 +447,7 @@
   <div class="wrap">
     <div class="hero-ct">
       <div class="hero-logo-block fi">
-        <img src="assets/oncosur/logo.jpg" alt="Logo Fundación Oncosur" class="logo-real-hero" loading="eager" fetchpriority="high" decoding="sync">
+        <img src="../assets/oncosur/logo.jpg" alt="Logo Fundación Oncosur" class="logo-real-hero" loading="eager" fetchpriority="high" decoding="sync">
       </div>
       <h1 class="hero-h1 fi d1"><em>Unidos</em> por el cáncer infantil</h1>
       <p class="hero-sub fi d2">Acompañamos a niños y familias del sur de Chile en uno de los momentos más difíciles de sus vidas.</p>
@@ -475,7 +485,7 @@
     <div class="nos-grid">
       <div class="nos-img-wrap fi-l">
         <div class="nos-ph">
-          <img src="assets/oncosur/equipo-oncosur.png" alt="Equipo y actividades Fundación Oncosur" loading="lazy">
+          <img src="../assets/oncosur/equipo-oncosur.png" alt="Equipo y actividades Fundación Oncosur" loading="lazy">
         </div>
         <div class="nos-badge"><span class="yr">2022</span>Año de<br>fundación</div>
       </div>
@@ -492,12 +502,6 @@
           <div class="val"><span class="val-ico">🏡</span> Identidad del sur</div>
         </div>
         <div class="dir-title">Directiva actual</div>
-        <div class="dir-foto-wrap fi">
-          <img src="assets/oncosur/fotodirectivaactual.jpeg"
-               alt="Directiva Fundación Oncosur"
-               class="dir-foto"
-               onerror="this.parentElement.innerHTML='<div class=\'dir-foto-ph\'><span>👥</span><p>Foto del equipo directivo</p></div>'">
-        </div>
         <div class="dir-grid">
           <div class="dir-card"><div class="dir-av">P</div><div class="dir-name">Patricia Elorz</div><div class="dir-role">Presidenta</div></div>
           <div class="dir-card"><div class="dir-av">K</div><div class="dir-name">Katherine Rossel</div><div class="dir-role">Vicepresidenta</div></div>
@@ -571,7 +575,7 @@
           <div class="stat"><div class="stat-n">2022</div><div class="stat-l">Año de fundación</div></div>
           <div class="stat"><div class="stat-n">100%</div><div class="stat-l">Sin fines de lucro</div></div>
         </div>
-        <div class="casa-block"><div class="casa-ico">🏠</div><div><h3>Casa Oncosur</h3><p>Casa de acogida diurna para niños en tratamiento y sus familias en el Hospital Base de Valdivia.</p><span class="casa-stat">70 desayunos mensuales entregados</span></div></div>
+        <div class="casa-block"><div class="casa-ico">🏠</div><div><h3>Casa Oncosur</h3><p>Casa de acogida diurna para niños en tratamiento y sus familias en el Hospital Base de Valdivia.</p><a href="https://maps.google.com/?q=Italia+1771+Valdivia+Chile" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;margin-top:10px;margin-bottom:12px;background:var(--am);color:var(--tx);font-size:14px;font-weight:800;padding:8px 16px;border-radius:50px;text-decoration:none;box-shadow:0 3px 12px rgba(247,194,5,.35);">📍 Italia #1771, Valdivia</a><br><span class="casa-stat">70 desayunos mensuales entregados</span></div></div>
       </div>
       <div class="imp-txt fi-r">
         <div class="tag">Nuestro impacto</div>
@@ -612,11 +616,11 @@
     </div>
     <div class="camp-phrase fi"><p>Cada campaña permite que una familia tenga un día más digno durante su tratamiento.</p></div>
     <div class="camp-grid">
-      <div class="camp-card fi d1"><span class="camp-emo">☕</span><h3>Dona un desayuno</h3><p>Cada día, familias que acompañan a sus hijos en tratamiento comienzan la jornada en Casa Oncosur. Tu donación pone el desayuno en esa mesa.</p><span class="camp-badge">Campaña permanente</span></div>
-      <div class="camp-card fi d2"><span class="camp-emo">🧼</span><h3>Dona kit de acogida</h3><p>Al llegar al hospital, las familias reciben un kit con artículos de primera necesidad. Ayuda a que ese primer día sea un poco más amable.</p><span class="camp-badge">Campaña activa</span></div>
-      <div class="camp-card fi d3"><span class="camp-emo">🧸</span><h3>Campaña de pijamas</h3><p>Durante las hospitalizaciones, los niños necesitan ropa cómoda. Esta campaña reúne pijamas nuevos para quienes más los necesitan.</p><span class="camp-badge">Campaña recurrente</span></div>
-      <div class="camp-card fi d4"><span class="camp-emo">🎈</span><h3>Día del niño</h3><p>Una jornada especial para que los niños en tratamiento y sus familias tengan un momento de alegría, juego y celebración.</p><span class="camp-badge">Campaña anual</span></div>
-      <div class="camp-card fi d5"><span class="camp-emo">🎄</span><h3>Navidad</h3><p>En diciembre, ningún niño en tratamiento debería estar sin la magia de la Navidad. Campaña de regalos y actividades para fin de año.</p><span class="camp-badge">Campaña anual</span></div>
+      <a href="https://oncosur.donando.cl/causa/Pijamas-6766" target="_blank" rel="noopener" class="camp-link fi d1"><div class="camp-card"><span class="camp-emo">🧸</span><h3>Campaña de pijamas</h3><p>Durante las hospitalizaciones, los niños necesitan ropa cómoda. Esta campaña reúne pijamas nuevos para quienes más los necesitan.</p><div class="camp-status activa"><span class="camp-dot verde"></span>Campaña activa</div><div style="margin-top:16px;background:linear-gradient(135deg,var(--am),#ffd44a);color:var(--tx);font-size:14px;font-weight:900;padding:11px 18px;border-radius:50px;text-align:center;letter-spacing:.3px;box-shadow:0 4px 16px rgba(247,194,5,.38);">👕 ¡Haz click aquí y dona!</div></div></a>
+      <div class="camp-card fi d2"><span class="camp-emo">☕</span><h3>Dona un desayuno</h3><p>Cada día, familias que acompañan a sus hijos en tratamiento comienzan la jornada en Casa Oncosur. Tu donación pone el desayuno en esa mesa.</p><div class="camp-status inactiva"><span class="camp-dot gris"></span>Próximamente activa</div></div>
+      <div class="camp-card fi d3"><span class="camp-emo">🧼</span><h3>Dona kit de acogida</h3><p>Al llegar al hospital, las familias reciben un kit con artículos de primera necesidad. Ayuda a que ese primer día sea un poco más amable.</p><div class="camp-status inactiva"><span class="camp-dot gris"></span>Próximamente activa</div></div>
+      <div class="camp-card fi d4"><span class="camp-emo">🎈</span><h3>Día del niño</h3><p>Una jornada especial para que los niños en tratamiento y sus familias tengan un momento de alegría, juego y celebración.</p><div class="camp-status inactiva"><span class="camp-dot gris"></span>Próximamente activa</div></div>
+      <div class="camp-card fi d5"><span class="camp-emo">🎄</span><h3>Navidad</h3><p>En diciembre, ningún niño en tratamiento debería estar sin la magia de la Navidad. Campaña de regalos y actividades para fin de año.</p><div class="camp-status inactiva"><span class="camp-dot gris"></span>Próximamente activa</div></div>
     </div>
   </div>
 </section>
@@ -670,7 +674,7 @@
       <!-- Testimonio destacado: Familia González - Silva -->
       <div class="test-card-feat fi d1">
         <div class="tcf-img">
-          <img src="assets/oncosur/familia-gonzalez-silva.jpg"
+          <img src="../assets/oncosur/familia-gonzalez-silva.jpg"
                alt="Familia González - Silva, Trinidad y Jeanette"
                loading="lazy"
                onerror="this.parentElement.style.background='linear-gradient(135deg,rgba(247,194,5,.1),rgba(94,224,233,.18))';this.style.display='none'">
@@ -693,7 +697,7 @@
       <!-- Testimonio: Paola Castillo -->
       <div class="test-card-feat fi d2">
         <div class="tcf-img contain">
-          <img src="assets/oncosur/fotoresena.jpeg"
+          <img src="../assets/oncosur/fotoreseña.jpeg"
                alt="Paola Castillo, mamá de Maxi"
                loading="lazy"
                onerror="this.parentElement.style.background='linear-gradient(135deg,rgba(247,194,5,.1),rgba(94,224,233,.18))';this.style.display='none'">
@@ -715,7 +719,7 @@
       <!-- Testimonio: Constanza Lira -->
       <div class="test-card-feat fi d3">
         <div class="tcf-img contain">
-          <img src="assets/oncosur/fotoresenaconstanza.jpeg"
+          <img src="../assets/oncosur/fotoreseñaconstanza.jpeg"
                alt="Constanza Lira, mamá de Enzo"
                loading="lazy"
                onerror="this.parentElement.style.background='linear-gradient(135deg,rgba(247,194,5,.1),rgba(94,224,233,.18))';this.style.display='none'">
@@ -748,19 +752,19 @@
       <p class="ssub">Momentos reales de acompañamiento, campañas y conexión con las familias.</p>
     </div>
     <div class="gal-grid">
-      <div class="gal-item feat fi"><img src="assets/oncosur/manos-unidas-pulseras.jpg" alt="Manos unidas con pulseras rojas" loading="lazy"></div>
-      <div class="gal-item fi d1"><img src="assets/oncosur/navidad-ninos-hospital.jpg" alt="Niños con Papá Noel en hospital" loading="lazy"></div>
-      <div class="gal-item fi d2"><img src="assets/oncosur/nina-hospital-sonrisa.jpg" alt="Niña en hospital sonriendo" loading="lazy"></div>
-      <div class="gal-item fi d3"><img src="assets/oncosur/nino-lentes-hospital.jpg" alt="Niño con lentes en hospital" loading="lazy"></div>
-      <div class="gal-item fi d4"><img src="assets/oncosur/nina-frutilla-hospital.jpg" alt="Niña con frutilla en hospital" loading="lazy"></div>
-      <div class="gal-item fi d5"><img src="assets/oncosur/ninas-jugando.jpg" alt="Niñas jugando" loading="lazy"></div>
-      <div class="gal-item fi d6"><img src="assets/oncosur/ninos-alas-parque.jpg" alt="Niños con alas en parque" loading="lazy"></div>
-      <div class="gal-item fi d7"><img src="assets/oncosur/visita-nino-hospital.jpg" alt="Visita a niño en hospital" loading="lazy"></div>
-      <div class="gal-item fi d8"><img src="assets/oncosur/nino-muneca-artesanal.jpg" alt="Niño con muñeca artesanal" loading="lazy"></div>
-      <div class="gal-item fi d9"><img src="assets/oncosur/celebracion-familias.jpg" alt="Celebración con familias" loading="lazy"></div>
-      <div class="gal-item fi d10"><img src="assets/oncosur/equipo-hospital-oncosur.jpg" alt="Equipo Oncosur en hospital" loading="lazy"></div>
-      <div class="gal-item fi d11"><img src="assets/oncosur/entrega-bolsas-navidad.jpg" alt="Entrega de bolsas navideñas" loading="lazy"></div>
-      <div class="gal-item fi d12"><img src="assets/oncosur/reunion-familias-equipo.jpg" alt="Reunión de familias y equipo" loading="lazy"></div>
+      <div class="gal-item feat fi"><img src="../assets/oncosur/manos-unidas-pulseras.jpg" alt="Manos unidas con pulseras rojas" loading="lazy"></div>
+      <div class="gal-item fi d1"><img src="../assets/oncosur/navidad-ninos-hospital.jpg" alt="Niños con Papá Noel en hospital" loading="lazy"></div>
+      <div class="gal-item fi d2"><img src="../assets/oncosur/nina-hospital-sonrisa.jpg" alt="Niña en hospital sonriendo" loading="lazy"></div>
+      <div class="gal-item fi d3"><img src="../assets/oncosur/nino-lentes-hospital.jpg" alt="Niño con lentes en hospital" loading="lazy"></div>
+      <div class="gal-item fi d4"><img src="../assets/oncosur/nina-frutilla-hospital.jpg" alt="Niña con frutilla en hospital" loading="lazy"></div>
+      <div class="gal-item fi d5"><img src="../assets/oncosur/ninas-jugando.jpg" alt="Niñas jugando" loading="lazy"></div>
+      <div class="gal-item fi d6"><img src="../assets/oncosur/ninos-alas-parque.jpg" alt="Niños con alas en parque" loading="lazy"></div>
+      <div class="gal-item fi d7"><img src="../assets/oncosur/visita-nino-hospital.jpg" alt="Visita a niño en hospital" loading="lazy"></div>
+      <div class="gal-item fi d8"><img src="../assets/oncosur/nino-muneca-artesanal.jpg" alt="Niño con muñeca artesanal" loading="lazy"></div>
+      <div class="gal-item fi d9"><img src="../assets/oncosur/celebracion-familias.jpg" alt="Celebración con familias" loading="lazy"></div>
+      <div class="gal-item fi d10"><img src="../assets/oncosur/equipo-hospital-oncosur.jpg" alt="Equipo Oncosur en hospital" loading="lazy"></div>
+      <div class="gal-item fi d11"><img src="../assets/oncosur/entrega-bolsas-navidad.jpg" alt="Entrega de bolsas navideñas" loading="lazy"></div>
+      <div class="gal-item fi d12"><img src="../assets/oncosur/reunion-familias-equipo.jpg" alt="Reunión de familias y equipo" loading="lazy"></div>
     </div>
   </div>
 </section>
@@ -788,7 +792,7 @@
         </div>
       </div>
       <div class="con-foto fi-r">
-        <img src="assets/oncosur/foto_carla_atman.png"
+        <img src="../assets/oncosur/Foto_carla_atman.png"
              alt="Fundación Oncosur"
              loading="lazy"
              onerror="this.parentElement.style.background='linear-gradient(135deg,rgba(94,224,233,.1),rgba(247,194,5,.08))'">
@@ -803,7 +807,7 @@
     <div class="ft-top">
       <div class="ft-brand">
         <div class="ft-logo">
-          <img src="assets/oncosur/logo.jpg" alt="Logo Fundación Oncosur" style="height:80px;width:auto;object-fit:contain;">
+          <img src="../assets/oncosur/logo.jpg" alt="Logo Fundación Oncosur" style="height:80px;width:auto;object-fit:contain;">
           <div><div class="ft-name">Fundación Oncosur</div><div class="ft-sub">Valdivia · Chile</div></div>
         </div>
         <p>Acompañamiento digno a niños con cáncer y sus familias en el sur de Chile.</p>
