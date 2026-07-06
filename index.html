@@ -293,6 +293,11 @@
     .gal-item img { width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease; }
     .gal-item:hover img { transform:scale(1.05); }
     .gal-item.feat { grid-column:span 2;grid-row:span 2; }
+    .gal-mini-hd { text-align:center;margin:52px 0 24px;position:relative; }
+    .gal-mini-hd::before { content:'';display:block;width:60px;height:3px;border-radius:3px;background:linear-gradient(90deg,var(--am),var(--ce));margin:0 auto 20px; }
+    .gal-mini-hd h3 { font-size:clamp(20px,2.6vw,28px);font-weight:900;color:var(--tx); }
+    .gal-mini-hd h3 em { color:var(--am-dk);font-style:normal; }
+    .gal-mini-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:14px; }
 
     /* CONTACTO */
     #contacto { background:linear-gradient(135deg,#0e1629 0%,#0f3460 100%);color:#fff; }
@@ -358,6 +363,7 @@
       .burger { display:flex; }
       .gal-grid { grid-template-columns:1fr 1fr; }
       .gal-item.feat { grid-column:span 2;grid-row:span 1; }
+      .gal-mini-grid { grid-template-columns:1fr 1fr; }
       .nos-vals { grid-template-columns:1fr; }
       .imp-stats { grid-template-columns:1fr 1fr; }
       .ay-card { padding:32px 24px; }
@@ -386,6 +392,7 @@
       .stat.feat { grid-column:span 1; }
       .gal-grid { grid-template-columns:1fr; }
       .gal-item.feat { grid-column:span 1; }
+      .gal-mini-grid { grid-template-columns:1fr; }
       .ft-top { flex-direction:column; }
       .casa-block { flex-direction:column;text-align:center; }
       .nos-badge { position:static;margin-top:16px;display:inline-block; }
@@ -439,7 +446,6 @@
     <div class="hs hs-active" style="background-image:url('assets/oncosur/navidad-ninos-hospital.jpg')"></div>
     <div class="hs" style="background-image:url('assets/oncosur/celebracion-familias.jpg')"></div>
     <div class="hs" style="background-image:url('assets/oncosur/ninos-alas-parque.jpg')"></div>
-    <div class="hs" style="background-image:url('assets/oncosur/manos-unidas-pulseras.jpg')"></div>
     <div class="hs" style="background-image:url('assets/oncosur/nina-hospital-sonrisa.jpg')"></div>
   </div>
   <div class="hero-overlay"></div>
@@ -762,8 +768,7 @@
       <p class="ssub">Momentos reales de acompañamiento, campañas y conexión con las familias.</p>
     </div>
     <div class="gal-grid">
-      <div class="gal-item feat fi"><img src="assets/oncosur/manos-unidas-pulseras.jpg" alt="Manos unidas con pulseras rojas" loading="lazy"></div>
-      <div class="gal-item fi d1"><img src="assets/oncosur/navidad-ninos-hospital.jpg" alt="Niños con Papá Noel en hospital" loading="lazy"></div>
+      <div class="gal-item feat fi"><img src="assets/oncosur/navidad-ninos-hospital.jpg" alt="Niños con Papá Noel en hospital" loading="lazy"></div>
       <div class="gal-item fi d2"><img src="assets/oncosur/nina-hospital-sonrisa.jpg" alt="Niña en hospital sonriendo" loading="lazy"></div>
       <div class="gal-item fi d3"><img src="assets/oncosur/nino-lentes-hospital.jpg" alt="Niño con lentes en hospital" loading="lazy"></div>
       <div class="gal-item fi d4"><img src="assets/oncosur/nina-frutilla-hospital.jpg" alt="Niña con frutilla en hospital" loading="lazy"></div>
@@ -774,7 +779,15 @@
       <div class="gal-item fi d9"><img src="assets/oncosur/celebracion-familias.jpg" alt="Celebración con familias" loading="lazy"></div>
       <div class="gal-item fi d10"><img src="assets/oncosur/equipo-hospital-oncosur.jpg" alt="Equipo Oncosur en hospital" loading="lazy"></div>
       <div class="gal-item fi d11"><img src="assets/oncosur/entrega-bolsas-navidad.jpg" alt="Entrega de bolsas navideñas" loading="lazy"></div>
-      <div class="gal-item fi d12"><img src="assets/oncosur/reunion-familias-equipo.jpg" alt="Reunión de familias y equipo" loading="lazy"></div>
+    </div>
+
+    <div class="gal-mini-hd fi">
+      <h3>Corrida <em>Oncosur</em> · Junio 2026</h3>
+    </div>
+    <div class="gal-mini-grid">
+      <div class="gal-item fi d1"><img src="assets/oncosur/corrida-oncosur-1.png" alt="Equipo Oncosur en la corrida, junio 2026" loading="lazy"></div>
+      <div class="gal-item fi d2"><img src="assets/oncosur/corrida-oncosur-2.png" alt="Partida de la corrida Oncosur, junio 2026" loading="lazy"></div>
+      <div class="gal-item fi d3"><img src="assets/oncosur/corrida-oncosur-3.png" alt="Voluntarios en la corrida Oncosur, junio 2026" loading="lazy"></div>
     </div>
   </div>
 </section>
